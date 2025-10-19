@@ -1,23 +1,23 @@
-import doctorRepository from "../repositories/DoctorRepository";
+import DoctorRepository from "../repositories/DoctorRepository.js";
 
 const getAllDoctors = async () => {
-    return await doctorRepository.getAllDoctors();
+    return await DoctorRepository.getAllDoctors();
 }
 
 const getDoctor = async (id) => {
-    return await doctorRepository.getDoctor(id);
+    return await DoctorRepository.getDoctor(id);
 }
 
 const saveDoctor = async (doctorData) => {
-    return await doctorRepository.saveDoctor(doctorData);
+    return await DoctorRepository.saveDoctor(doctorData);
 }
 
 const updateDoctor = async (id, doctorData) => {
-    return await doctorRepository.updateDoctor(id, doctorData);
+    return await DoctorRepository.updateDoctor(id, doctorData);
 }
 
 const deleteDoctor = async (id) => {
-    return await doctorRepository.deleteDoctor(id);
+    return await DoctorRepository.deleteDoctor(id);
 }
 
 

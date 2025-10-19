@@ -1,34 +1,34 @@
-import appoitmentRepository from "../repositories/AppointmentRepository";
+import AppointmentRepository from "../repositories/AppointmentRepository.js";
 
 const getAllAppointments = async () => {
-    return await appoitmentRepository.getAllAppointments();
+    return await AppointmentRepository.getAllAppointments();
 }
 
-const getAppointments = async (id) => {
-    return await appoitmentRepository.getAppointments(id);
+const getAppointment = async (id) => {
+    return await AppointmentRepository.getAppointment(id);
 }
 
-const saveAppointments = async (date, doctorId, pacientId) => {
-    return await appoitmentRepository.saveAppointments(date, doctorId, pacientId);
+const saveAppointment = async (appointmentData) => {
+    return await AppointmentRepository.saveAppointment(appointmentData);
 }
 
-const updateAppointments = async (id, {date, doctorId, pacientId}) => {
-    return await appoitmentRepository.updateAppointments(id, {date, doctorId, pacientId});
+const updateAppointment = async (id, appointmentData) => {
+    return await AppointmentRepository.updateAppointment(id, appointmentData);
 }
 
-const deleteAppointments = async (id) => {
-    return await appoitmentRepository.deleteAppointments(id);
+const deleteAppointment = async (id) => {
+    return await AppointmentRepository.deleteAppointment(id);
 }
 
 
 
-const appoitmenteService = {
+const appointmentService = {
         getAllAppointments,
-        getAppointments,
-        saveAppointments,
-        updateAppointments,
-        deleteAppointments
+        getAppointment,
+        saveAppointment,
+        updateAppointment,
+        deleteAppointment
 
 }
 
-export default appoitmenteService;
+export default appointmentService;

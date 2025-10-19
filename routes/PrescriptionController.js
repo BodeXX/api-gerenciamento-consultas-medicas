@@ -1,11 +1,11 @@
 import express from "express";
-import prescriptionService from "../services/PrescriptionService";
+import PrescriptionService from "../services/PrescriptionService.js";
 
 let router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
-        const prescription = await prescriptionService.getAllPrescriptions();
+        const prescription = await PrescriptionService.getAllPrescriptions();
         res.json(prescription);
     } catch (error) {
         console.error(error);
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.post('/newPrescription', async (req, res) => {
     try {
         const prescription = req.body;
-        const newPrescription = await prescriptionService.savePrescription(prescription);
+        const newPrescription = await PrescriptionService.savePrescription(prescription);
         res.status(201).json(newPrescription);
 
     } catch (error) {
@@ -29,7 +29,7 @@ router.post('/newPrescription', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const prescription = await prescriptionService.getPrescription(id);
+        const prescription = await PrescriptionService.getPrescription(id);
         res.json(prescription);
     } catch (error) {
         console.error(error);
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
     const {id} = req.params;
     const prescriptionData = req.body;
     try {
-        const prescription = await prescriptionService.updatePrescription(id, pacientData);
+        const prescription = await PrescriptionService.updatePrescription(id, pacientData);
         res.json(prescription);
     } catch (error) {
         console.error(error);
@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const {id} = req.params;
     try {
-        const prescription = await prescriptionService.deletePrescription(id);
+        const prescription = await PrescriptionService.deletePrescription(id);
         res.json(prescription);
 } catch (error) {
         console.error(error);

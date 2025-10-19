@@ -1,23 +1,23 @@
-import prescriptionRepository from "../repositories/prescriptionRepository";
+import PrescriptionRepository from "../repositories/PrescriptionRepository.js";
 
 const getAllPrescriptions = async () => {
-    return await prescriptionRepository.getAllPrescriptions();
+    return await PrescriptionRepository.getAllPrescriptions();
 }
 
 const getPrescription = async (id) => {
-    return await prescriptionRepository.getPrescription(id);
+    return await PrescriptionRepository.getPrescription(id);
 }
 
 const savePrescription = async (prescriptionData) => {
-    return await prescriptionRepository.savePrescription(prescriptionData);
+    return await PrescriptionRepository.savePrescription(prescriptionData);
 }
 
 const updatePrescription = async (id, prescriptionData) => {
-    return await prescriptionRepository.updatePrescription(id, prescriptionData);
+    return await PrescriptionRepository.updatePrescription(id, prescriptionData);
 }
 
 const deletePrescription = async (id) => {
-    return await prescriptionRepository.deletePrescription(id);
+    return await PrescriptionRepository.deletePrescription(id);
 }
 
 

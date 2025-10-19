@@ -1,61 +1,66 @@
 import express from "express";
-import pacientService from "../services/PacientService";
+import PacientService from "../services/PacientService.js";
 
 let router = express.Router();
 
-router.post('/newPacient', async (req, res) => {
+router.post('/patients', async (req, res) => {
     try {
         const pacientData = req.body;
-        const newPacient = await pacientService.savePacient(pacientData);
+        const newPacient = await PacientService.savePacient(pacientData);
         res.status(201).json(newPacient);
-
     } catch (error) {
-        console.error(error);
-        res.status(500).send(error);
+        console.log(error);
+        res.status(500).json({ message: "Error creating pacient", error: error.message });
     }
 });
 
-router.get('/', async (req, res) => {
+router.get('/patients', async (req, res) => {
     try {
-        const pacients = await pacientService.getAllPacients();
-        res.json(pacients);
+        const pacients = await PacientService.getAllPacients();
+        res.status(200).json(pacients);
     } catch (error) {
-        console.error(error);
-        res.status(500).send(error);
+        console.log(error);
+        res.status(500).json({ message: "Error fetching pacients", error: error.message });
     }
 });
 
-router.get('/:id', async (req, res) => {
-    const {id} = req.params;
+router.get('/patients/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-        const pacient = await pacientService.getPacient(id);
-        res.json(pacient);
+        const pacient = await PacientService.getPacient(id);
+        if (!pacient) {
+            return res.status(404).json({ message: "Pacient not found" });
+        }
+        res.status(200).json(pacient);
     } catch (error) {
-        console.error(error);
-        res.status(500).send(error);
+        console.log(error);
+        res.status(500).json({ message: "Error fetching pacient", error: error.message });
     }
 });
 
-router.put('/:id', async (req, res) => {
-    const {id} = req.params;
+router.put('/patients/:id', async (req, res) => {
+    const { id } = req.params;
     const pacientData = req.body;
     try {
-        const pacient = await pacientService.updatePacient(id, pacientData);
-        res.json(pacient);
+        const updatedPacient = await PacientService.updatePacient(id, pacientData);
+        if (!updatedPacient) {
+            return res.status(404).json({ message: "Pacient not found" });
+        }
+        res.status(200).json(updatedPacient);
     } catch (error) {
-        console.error(error);
-        res.status(500).send(error);
+        console.log(error);
+        res.status(500).json({ message: "Error updating pacient", error: error.message });
     }
 });
 
-router.delete('/:id', async (req, res) => {
-    const {id} = req.params;
+router.delete('/patients/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-        const pacient = await pacientService.deletePacient(id);
-        res.json(pacient);
-} catch (error) {
-        console.error(error);
-        res.status(500).send(error);
+        await PacientService.deletePacient(id);
+        res.status(204).send();
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Error deleting pacient", error: error.message });
     }
 });
 

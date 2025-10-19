@@ -1,4 +1,4 @@
-import { Doctor } from "models/Doctor";
+import  Doctor  from "../models/Doctor.js";
 
 const getAllDoctors = async () => {
     return await Doctor.find();
@@ -15,7 +15,7 @@ const getDoctor = async (id) => {
 
 const saveDoctor = async (doctorData) => {
     try {
-        const doctor = new Doctor({doctorData});
+        const doctor = new Doctor(doctorData);
         return await doctor.save();
     } catch (error) {
         throw new Error(error);

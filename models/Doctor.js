@@ -1,8 +1,8 @@
-import { mongoose } from "mongoose";
+import  mongoose  from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const doctorSchemaSchema = new Schema ({
+const doctorSchema = new Schema ({
     name: {
         type: String,
         required: [true, 'Doctor name is required.']

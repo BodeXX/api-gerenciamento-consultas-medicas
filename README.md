@@ -1,6 +1,6 @@
 #  API de Gerenciamento de Consultas Médicas
 
-API RESTful desenvolvida como parte dos estudos em desenvolvimento de sistemas, focada em criar um sistema de gerenciamento para uma clínica, incluindo o agendamento de consultas, cadastro de médicos, pacientes e prescrições.
+API RESTful desenvolvida em Node.js para um sistema de gerenciamento de clínica médica. O projeto implementa funcionalidades essenciais como cadastro de médicos, pacientes, agendamento de consultas e gerenciamento de prescrições, seguindo as melhores práticas de desenvolvimento de APIs.
 
 ## ✨ Funcionalidades
 
@@ -25,21 +25,29 @@ O projeto foi construído utilizando uma arquitetura em camadas para garantir a 
 - **Mongoose:** Biblioteca para modelagem de dados do MongoDB.
 - **MongoDB:** Banco de dados NoSQL utilizado no projeto.
 
+## 📋 Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+- [Node.js](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
+
 ## 🚀 Como Executar o Projeto
 
 Siga os passos abaixo para executar o projeto em seu ambiente local.
 
 ```bash
 # 1. Clone o repositório
-git clone []()
+git clone https://github.com/BodeXX/api-gerenciamento-consultas-medicas
 
 # 2. Navegue até a pasta do projeto
-cd NOME-DO-REPOSITORIO
+cd MedicApp
 
 # 3. Instale as dependências
 npm install
 
-# 4. Inicie o servidor
+# 4. Certifique-se de que o MongoDB está em execução na sua máquina.
+
+# 5. Inicie o servidor
 npm start
 
 

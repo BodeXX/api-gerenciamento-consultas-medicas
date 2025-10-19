@@ -1,4 +1,4 @@
-import { Appointment } from "models/Appointment";
+import  Appointment  from "../models/Appointment.js";
 
 const getAllAppointments = async () => {
     return await Appointment.find();
@@ -13,18 +13,18 @@ const getAppointment = async (id) => {
 
 }
 
-const saveAppointment = async (date, doctorId, pacientId) => {
+const saveAppointment = async (appointmentData) => {
     try {
-        const prescrition = new Appointment({date, doctorId, pacientId});
-        return await prescrition.save();
+        const appointment = new Appointment(appointmentData);
+        return await appointment.save();
     } catch (error) {
         throw new Error(error);
     }
 }
 
-const updateAppointment = async (id, {date, doctorId, pacientId}) => {
+const updateAppointment = async (id, appointmentData) => {
     try {
-        return await Appointment.findByIdAndUpdate(id, {date, doctorId, pacientId}, {new: true});
+        return await Appointment.findByIdAndUpdate(id, appointmentData, {new: true});
     } catch (error) {
         throw new Error(error);
     }
@@ -38,7 +38,7 @@ const deleteAppointment = async (id) => {
     }
 }
 
-const appoitmenteRepository = {
+const appointmentRepository = {
     getAllAppointments,
     getAppointment,
     saveAppointment,
@@ -46,4 +46,4 @@ const appoitmenteRepository = {
     deleteAppointment
 }
 
-export default appoitmenteRepository;
+export default appointmentRepository;
