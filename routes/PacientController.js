@@ -3,7 +3,7 @@ import PacientService from "../services/PacientService.js";
 
 let router = express.Router();
 
-router.post('/patients', async (req, res) => {
+router.post('/pacients', async (req, res) => {
     try {
         const pacientData = req.body;
         const newPacient = await PacientService.savePacient(pacientData);
@@ -14,7 +14,7 @@ router.post('/patients', async (req, res) => {
     }
 });
 
-router.get('/patients', async (req, res) => {
+router.get('/pacients', async (req, res) => {
     try {
         const pacients = await PacientService.getAllPacients();
         res.status(200).json(pacients);
@@ -24,7 +24,7 @@ router.get('/patients', async (req, res) => {
     }
 });
 
-router.get('/patients/:id', async (req, res) => {
+router.get('/pacients/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const pacient = await PacientService.getPacient(id);
@@ -38,7 +38,7 @@ router.get('/patients/:id', async (req, res) => {
     }
 });
 
-router.put('/patients/:id', async (req, res) => {
+router.put('/pacients/:id', async (req, res) => {
     const { id } = req.params;
     const pacientData = req.body;
     try {
@@ -53,7 +53,7 @@ router.put('/patients/:id', async (req, res) => {
     }
 });
 
-router.delete('/patients/:id', async (req, res) => {
+router.delete('/pacients/:id', async (req, res) => {
     const { id } = req.params;
     try {
         await PacientService.deletePacient(id);

@@ -24,7 +24,7 @@ const saveAppointment = async (appointmentData) => {
 
 const updateAppointment = async (id, appointmentData) => {
     try {
-        return await Appointment.findByIdAndUpdate(id, appointmentData, {new: true});
+        return await Appointment.findByIdAndUpdate(id, appointmentData, { new: true });
     } catch (error) {
         throw new Error(error);
     }

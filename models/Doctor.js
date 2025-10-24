@@ -1,4 +1,5 @@
 import  mongoose  from "mongoose";
+import bcrypt from "bcrypt";
 
 const Schema = mongoose.Schema;
 
@@ -38,6 +39,25 @@ const doctorSchema = new Schema ({
         default: Date.now
     }
 });
+
+doctorSchema.pre('save', async function(next) {
+    // Só criptografa a senha se ela foi modificada (ou é nova)
+    if (!this.isModified('password')) {
+        return next();
+    }
+    try {
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Método para comparar a senha candidata com a senha no banco de dados
+doctorSchema.methods.comparePassword = async function(candidatePassword) {
+    return bcrypt.compare(candidatePassword, this.password);
+};
 
 const doctor = mongoose.model('Doctor', doctorSchema);
 

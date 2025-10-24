@@ -1,5 +1,9 @@
 import PrescriptionRepository from "../repositories/PrescriptionRepository.js";
 
+const postPrescriptions = async () => {
+    return await PrescriptionRepository.prescriptionsNew();
+}
+
 const getAllPrescriptions = async () => {
     return await PrescriptionRepository.getAllPrescriptions();
 }
@@ -23,6 +27,7 @@ const deletePrescription = async (id) => {
 
 
 const prescriptionService = {
+        postPrescriptions,
         getAllPrescriptions,
         getPrescription,
         savePrescription,

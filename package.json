@@ -10,7 +10,9 @@
   },
   "author": "Jonas Alberto",
   "license": "ISC",
+  "types": "module",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "mongoose": "^8.19.1"
   }

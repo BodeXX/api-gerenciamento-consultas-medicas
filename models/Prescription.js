@@ -2,7 +2,7 @@ import  mongoose  from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const prescriptionSchema = new Schema ({
+const prescriptionSchema = new Schema({
     date: {
         type: Date,
         required: [true, 'prescription date is required.']
@@ -30,6 +30,6 @@ const prescriptionSchema = new Schema ({
     }
 });
 
-const prescription = mongoose.model('prescription', prescriptionSchema);
+const Prescription = mongoose.model('Prescription', prescriptionSchema);
 
-export default prescription;
+export default Prescription;

@@ -1,5 +1,10 @@
 import PacientRepository from "../repositories/PacientRepository.js";
 
+
+const postPacients = async () => {
+    return await PacientRepository.postPacients();
+}
+
 const getAllPacients = async () => {
     return await PacientRepository.getAllPacients();
 }
