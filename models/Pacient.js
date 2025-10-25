@@ -17,7 +17,13 @@ const pacientSchema = new Schema ({
     },
     phone: {
         type: String,
-        required: [true, 'pacient phone is required.']
+        required: [true, 'pacient phone is required.'],
+        validate: {
+            validator: (v) => {
+                return /\d{2} 9\d{4}-\d{4}/.test(v);
+            },
+            message: props => `${props.value} This is not a valid phone value. PLease use the following formart 99 91234-4567`
+        }
     },
     createdAt: {
         type: Date,
