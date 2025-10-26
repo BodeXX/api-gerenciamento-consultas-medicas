@@ -24,9 +24,6 @@ const saveDoctor = async (doctorData) => {
 
 const updateDoctor = async (id, doctorData) => {
     try {
-        // Usar findByIdAndUpdate não dispara o middleware 'pre-save' do Mongoose.
-        // Para garantir que a senha seja criptografada na atualização,
-        // precisamos buscar o documento, atualizar os campos e depois salvar.
 
         const doctor = await Doctor.findById(id);
         if (!doctor) {
@@ -50,6 +47,17 @@ const deleteDoctor = async (id) => {
     }
 };
 
+// login
+
+const getDoctorByLogin = async (login) => {
+    try {
+        return await Doctor.findOne({"login": login});
+    } catch (error) {
+        throw new Error(error);
+
+    }
+};
+
 
 
 const doctorRepository = {
@@ -57,7 +65,8 @@ const doctorRepository = {
     getDoctor,
     saveDoctor,
     updateDoctor,
-    deleteDoctor
+    deleteDoctor,
+    getDoctorByLogin
 }
 
 export default doctorRepository;
